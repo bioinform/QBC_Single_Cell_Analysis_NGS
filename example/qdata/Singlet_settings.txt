@@ -1,0 +1,5 @@
+$celleventThreshold				:10: 				The TOTAL # of events per cell must be higher than this to register as real.
+$expressThreshold					:5: 				Number of events required to register a parameter as "positive" -- Works with $OverPositiveThreshold to stop junk cells.
+$OverPositiveThreshold		:5:  			How many parameters can be positive for $expressThreshold at the same time?  Cuts down on background junk cells
+$NeedPositiveThreshold		:1:					Normally set to 1.  The TOTAL # of parameters above threshold to register as real.
+								:CD33_Ab,EIF2S3,HBG1:     GateOnOnly   Use these to calculate $expressThreshold & $celleventThreshold 

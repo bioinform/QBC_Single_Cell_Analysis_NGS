@@ -1,3 +1,17 @@
+# Quantum Barcoding : Ultra-High Throughput Single Cell Analysis of Proteins and RNAs by Split-pool Synthesis
+
+Quantum Barcoding (QBC) is a method enabling simultaneous, ultra-high throughput single-cell-barcoding, of millions of cells for targeted single cell analysis of proteins and RNAs. This method circumvents the need to isolate single cells by building cell-specific oligo barcodes dynamically within each cell. Cell-specific codes are added to each tagged molecule within cells. 
+
+This analysis workflow reads in a fasta file of a sequenced library built using of QBC_v1.0 barcodes, processes it through QBC-parse_v1.0 , filters and normalizes to generate a final output in FCS 4.0 standard Flow Cytometry format.  
+
+QBC-parse_v1.0  - Deduplication based on unique molecular identifiers (UMI) – were performed using the QBC-parse_v1.0  which allows alignment of sequences with one mismatch. 
+
+The QBC algorithm sequentially: a) detects barcode via alignments, b) corrects barcode by efficiently comparing barcodes to a whitelist, c) deduplicates based on UMI, d) evaluates reads for chimera filtering (check for evidence of PCR-based cross-over), e) filters reads for underrepresented/artificially created cells and  f)transforms sequences into table of cells and markers.
+
+For more information contact us at bioinformatics.red@roche.com 
+
+
+
 # QBC_Single_Cell_Analysis_NGS
 
 ## Description:

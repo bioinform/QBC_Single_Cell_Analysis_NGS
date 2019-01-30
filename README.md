@@ -8,6 +8,8 @@ QBC-parse_v1.0  - Deduplication based on unique molecular identifiers (UMI) – 
 
 The QBC algorithm sequentially: a) detects barcode via alignments, b) corrects barcode by efficiently comparing barcodes to a whitelist, c) deduplicates based on UMI, d) evaluates reads for chimera filtering (check for evidence of PCR-based cross-over), e) filters reads for underrepresented/artificially created cells and  f)transforms sequences into table of cells and markers.
 
+The data is further normalized as follows: expression values Ei,j for marker i in cell j were calculated by dividing unique read counts for marker i by the sum of the marker counts in cell j, to normalize for differences in coverage. The output is a corrected expression matrix which is then used as input for fcs conversion.
+
 For more information contact us at bioinformatics.red@roche.com 
 
 

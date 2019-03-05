@@ -49,8 +49,8 @@ pip3 install --user numpy
 ## Usage:
 
 ``` shell
-git clone http://ghe-rss.roche.com/paladugs/QBC_Paper.git
-cd QBC_Paper
+git clone https://github.com/bioinform/QBC_Single_Cell_Analysis_NGS.git
+cd QBC_Single_Cell_Analysis_NGS
 ```
 
 Now using your favorite editor update the `custom_job.txt` file with the location of fasta file, qdata folder and output folder.

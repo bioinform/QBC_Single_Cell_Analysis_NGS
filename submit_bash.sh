@@ -1,16 +1,28 @@
-#!/bin/bash
+#!/usr/bin/bash
 #========================================================================================
 #Title:        submit_bash.sh
 #Description:  This is a convenience script to run various step in the analysis pipeline.
 #Author:       Sri R. Paladugu
-#Date:         December 05 2018
-#Version:      0.1
+#Date:         May 03 2019
+#Version:      0.2
 #Usage:        bash submit_bash.sh custom_job.txt
-#Dependencies: Python-3.6.0, R-3.3.2, jdk8u92
+#Dependencies: Miniconda3, Python-3.6.0, R-3.3.2, jdk8u92
 #========================================================================================
-set -e
-set -u
-set -o pipefail
+#set -e
+#set -u
+#set -o pipefail
+
+# Proceed only if Miniconda3 is installed
+if ! command -v conda &>/dev/null; then
+    echo "Minconda/conda is not installed"
+    exit 1
+fi
+
+# Install and Activate qbcCondaEnv
+CONDA_BASE=$(conda info --base)
+source ${CONDA_BASE}/etc/profile.d/conda.sh
+bash qbc_conda_env.sh
+conda activate qbcCondaEnv
 
 # Proceed only if Python3 is installed
 if ! command -v python3 &>/dev/null; then
@@ -24,10 +36,15 @@ if ! command -v Rscript &>/dev/null; then
     exit 1
 fi
 
-# Proceed only if Python3 is installed
+# Proceed only if Java is installed
 if ! command -v java &>/dev/null; then
     echo "Java is not installed"
     exit 1
+fi
+
+if [[ $# -eq 0 ]] ; then
+    echo 'Please provide custom_job.txt as input.'
+    exit 0
 fi
 
 # Read custom_job.txt to fetch the variables and their values.
@@ -42,21 +59,36 @@ do
 done < $1
 
 # Paths to various tools we use in our analysis pipeline.
+flash="apps/flash/flash"
+seqtk="apps/seqtk/seqtk"
 parser="apps/parser/main"
 rmsinglets_script="apps/remove_singlets/singlets_remover.py"
 convert2fcs_script="apps/convert2fcs/generate_qbcReports.R"
 normalization_jar="apps/normalization/QBCNormalizator-v004-alpha2.jar"
 
 # Extract the sample name
-sample_name=$(basename -- "$fasta_file")
-sample_name=$(echo $sample_name | cut -d'.' -f1)
+filename=$(basename "$read1")
+IFS=' ' sarray=(${filename//_R1_/ })
+sample_name=${sarray[0]}
 echo $sample_name
+
+# Run the flash-merge step
+echo "=== Running FLASH merge Step ==="
+flash_output="$output_folder/$sample_name/flash_output/"
+mkdir -p $flash_output
+$flash -d ${flash_output} -o ${sample_name} -M 150 $read1 $read2
+
+# Run the seqtk step
+echo "=== Running seqtk Step to convert fastq to fasta ==="
+seqtk_output="$output_folder/$sample_name/seqtk_output/"
+mkdir -p $seqtk_output
+$seqtk seq -A ${flash_output}/${sample_name}.extendedFrags.fastq > ${seqtk_output}/${sample_name}.extendedFrags.fasta
 
 # Run the parser-step
 echo "=== Running Parser Step ==="
 parser_output="$output_folder/$sample_name/parser_output/"
 mkdir -p $parser_output
-$parser -f ${fasta_file} -i $qdata_folder -o $parser_output --save_bad_lines=1
+$parser -f ${seqtk_output}/${sample_name}.extendedFrags.fasta -i $qdata_folder -o $parser_output --save_bad_lines=1
 rm ${parser_output}*.byCells
 
 # Run remove-singlets step
@@ -89,7 +121,5 @@ java -jar $normalization_jar "$fcs2_norm/tmp_fcs/" $fcs2_norm 0 1 0.5
 rm -rf "$fcs2_norm/tmp_fcs/"
 rename '_UNJITTERED' '' ${fcs2_norm}*UNJITTERED*.fcs
 
-#while IFS= read -r fasta_file
-#do
-#    printf '%s\n' "$fasta_file"
-#done < ${fasta_files}
+echo "...The End..."
+conda deactivate

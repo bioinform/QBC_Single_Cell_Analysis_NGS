@@ -1,3 +1,4 @@
-fasta_file="/sc1/groups/research/workspace/sri/QBC/qbc_paper/example/QBC_analysis/Exp180G_S1_L001/seq/joined_reads/Exp180G_S1_L001.extendedFrags.fasta"
+read1="/sc1/groups/research/workspace/sri/QBC/qbc_paper/example/fastqs/Exp180G_S1_L001_R1_001.fastq.gz"
+read2="/sc1/groups/research/workspace/sri/QBC/qbc_paper/example/fastqs/Exp180G_S1_L001_R2_001.fastq.gz"
 qdata_folder="/sc1/groups/research/workspace/sri/QBC/qbc_paper/example/qdata"
 output_folder="/sc1/groups/research/workspace/sri/QBC/qbc_paper/out_folder"

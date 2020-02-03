@@ -4,7 +4,7 @@
 #Description:  This is a convenience script to run various step in the analysis pipeline.
 #Author:       Sri R. Paladugu
 #Date:         May 03 2019
-#Version:      0.2
+#Version:      v0.1
 #Usage:        bash submit_bash.sh custom_job.txt
 #Dependencies: Miniconda3, Python-3.6.0, R-3.3.2, jdk8u92
 #========================================================================================
@@ -61,7 +61,7 @@ done < $1
 # Paths to various tools we use in our analysis pipeline.
 flash="apps/flash/flash"
 seqtk="apps/seqtk/seqtk"
-parser="apps/parser/main"
+parser="apps/parser/build/main"
 rmsinglets_script="apps/remove_singlets/singlets_remover.py"
 convert2fcs_script="apps/convert2fcs/generate_qbcReports.R"
 normalization_jar="apps/normalization/QBCNormalizator-v004-alpha2.jar"

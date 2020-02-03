@@ -31,18 +31,21 @@ to standard flow-cytometry analysis software for further analysis.
 ## Usage:
 
 ``` shell
-git clone http://ghe-rss.roche.com/paladugs/QBC_Paper.git
-cd QBC_Paper
+git clone https://github.com/bioinform/QBC_Single_Cell_Analysis_NGS.git
+cd QBC_Single_Cell_Analysis_NGS
+cd apps/parser/
+bash linux_build.sh #This command builds the parser.
+cd ../../
 ```
 
 Now using your favorite editor update the `custom_job.txt` file with the location of read1 and read2 fastq files, qdata folder and output folder.
 
-| Parameter       | Explanation                                                                                                                                                                                                      | Sample Value                                                                                        |
-| :-------------  | :-----------------------------------                                                                                                                                                                             | :------------                                                                                       |
-| `read1`         | Folder location for read1 fastq file.                                                                                                                                                                            | `"/sc1/groups/research/workspace/sri/QBC/qbc_paper/example/fastqs/Exp180G_S1_L001_R1_001.fastq.gz"` |
-| `read2`         | Folder location for read2 fastq file.                                                                                                                                                                            | `"/sc1/groups/research/workspace/sri/QBC/qbc_paper/example/fastqs/Exp180G_S1_L001_R2_001.fastq.gz"` |
-| `qdata_folder`  | Folder location for qdata folder containing <br> oligos.txt, AHCA_Codes.txt, SC_Codes.txt, Singlet_settings.txt files. <br> Please refer to example/qdata <br>folder in this repo for the format of these files. | `"/sc1/groups/research/workspace/sri/QBC/qbc_paper/example/qdata"`                                  |
-| `output_folder` | Folder location for storing output files.                                                                                                                                                                        | `"/sc1/groups/research/workspace/sri/QBC/qbc_paper/out_folder"`                                     |
+| Parameter       | Explanation                                                                                                                                                                                                      |
+| :-------------  | :-----------------------------------                                                                                                                                                                             |
+| `read1`         | Folder location for read1 fastq file.                                                                                                                                                                            |
+| `read2`         | Folder location for read2 fastq file.                                                                                                                                                                            |
+| `qdata_folder`  | Folder location for qdata folder containing <br> oligos.txt, AHCA_Codes.txt, SC_Codes.txt, Singlet_settings.txt files. <br> Please refer to example/qdata <br>folder in this repo for the format of these files. |
+| `output_folder` | Folder location for storing output files.                                                                                                                                                                        |
 
 To generate the processed output from the raw fastq files type the following command at your terminal and press enter.
 

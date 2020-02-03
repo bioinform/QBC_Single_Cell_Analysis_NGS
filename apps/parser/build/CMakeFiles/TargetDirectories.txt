@@ -1,0 +1,4 @@
+/sc1/groups/research/workspace/sri/test/AppriseBioSoftware/Apprise_CUDA_Parse/build/CMakeFiles/rebuild_cache.dir
+/sc1/groups/research/workspace/sri/test/AppriseBioSoftware/Apprise_CUDA_Parse/build/CMakeFiles/edit_cache.dir
+/sc1/groups/research/workspace/sri/test/AppriseBioSoftware/Apprise_CUDA_Parse/build/CMakeFiles/main.dir
+/sc1/groups/research/workspace/sri/test/AppriseBioSoftware/Apprise_CUDA_Parse/build/CMakeFiles/boost.dir

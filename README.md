@@ -26,8 +26,6 @@ to standard flow-cytometry analysis software for further analysis.
 
 * Python3: Install [Python 3.6.0](https://www.python.org/downloads/)
 
-* R: Install [R 3.5.3](https://www.r-project.org/)
-
 ## Usage:
 
 ``` shell

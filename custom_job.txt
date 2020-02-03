@@ -1,4 +1,4 @@
-read1="/sc1/groups/research/workspace/sri/QBC/qbc_paper/example/fastqs/Exp180G_S1_L001_R1_001.fastq.gz"
-read2="/sc1/groups/research/workspace/sri/QBC/qbc_paper/example/fastqs/Exp180G_S1_L001_R2_001.fastq.gz"
-qdata_folder="/sc1/groups/research/workspace/sri/QBC/qbc_paper/example/qdata"
-output_folder="/sc1/groups/research/workspace/sri/QBC/qbc_paper/out_folder"
+read1="/fastqs_folder_location/Exp180G_S1_L001_R1_001.fastq.gz"
+read2="/fastqs_folder_location/Exp180G_S1_L001_R2_001.fastq.gz"
+qdata_folder="/qdata_folder_location/qdata"
+output_folder="/out_folder_location/out_folder"
